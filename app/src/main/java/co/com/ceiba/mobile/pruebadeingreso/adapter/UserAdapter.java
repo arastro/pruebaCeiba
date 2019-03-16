@@ -43,20 +43,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserHolder> {
         holder.txtEmail.setText(list.get(position).getEmail());
 
 
-         holder.btnPost.setOnClickListener(new View.OnClickListener() {
+        holder.btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                name  = list.get(position).getName();
-                phone = list.get(position).getPhone();
-                email = list.get(position).getEmail();
-
                 Intent i = new Intent(context, PostActivity.class);
-                i.putExtra("name", name);
-                i.putExtra("phone",phone);
-                i.putExtra("email", email);
+                i.putExtra("name", list.get(position).getName());
+                i.putExtra("phone",list.get(position).getPhone());
+                i.putExtra("email", list.get(position).getEmail());
+                i.putExtra("userId", Integer.toString(list.get(position).getId()));
                 view.getContext().startActivity(i);
             }
         });
+
 
 
     }
