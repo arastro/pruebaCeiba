@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import co.com.ceiba.mobile.pruebadeingreso.R;
 
-public class UserHolder extends RecyclerView.ViewHolder {
+public class UserHolder extends RecyclerView.ViewHolder  {
 
     public CardView cardUser;
     public TextView txtName;
@@ -24,4 +24,5 @@ public class UserHolder extends RecyclerView.ViewHolder {
         txtEmail = itemView.findViewById(R.id.email);
         btnPost  = itemView.findViewById(R.id.btn_view_post);
     }
+
 }

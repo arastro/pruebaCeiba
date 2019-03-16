@@ -37,19 +37,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserHolder holder, int position) {
+    public void onBindViewHolder( UserHolder holder, final int position) {
         holder.txtName.setText(list.get(position).getName());
         holder.txtPhone.setText(list.get(position).getPhone());
         holder.txtEmail.setText(list.get(position).getEmail());
 
-        name  = list.get(position).getName();
-        phone = list.get(position).getPhone();
-        email = list.get(position).getEmail();
 
          holder.btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Log.i("BOTON_IVAN", "SE ACTIVO EL BOTON");
+                name  = list.get(position).getName();
+                phone = list.get(position).getPhone();
+                email = list.get(position).getEmail();
+
                 Intent i = new Intent(context, PostActivity.class);
                 i.putExtra("name", name);
                 i.putExtra("phone",phone);
@@ -58,7 +58,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserHolder> {
             }
         });
 
-        
+
     }
 
     @Override
