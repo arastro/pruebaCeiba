@@ -1,8 +1,10 @@
 package co.com.ceiba.mobile.pruebadeingreso.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +15,13 @@ import java.util.List;
 import co.com.ceiba.mobile.pruebadeingreso.R;
 import co.com.ceiba.mobile.pruebadeingreso.holder.UserHolder;
 import co.com.ceiba.mobile.pruebadeingreso.models.User;
+import co.com.ceiba.mobile.pruebadeingreso.view.PostActivity;
 
 public class UserAdapter extends RecyclerView.Adapter<UserHolder> {
 
     List<User> list = Collections.emptyList();
     Context context;
+    String name, email, phone;
 
     public UserAdapter(List<User> list, Context context){
         this.list = list;
@@ -37,6 +41,24 @@ public class UserAdapter extends RecyclerView.Adapter<UserHolder> {
         holder.txtName.setText(list.get(position).getName());
         holder.txtPhone.setText(list.get(position).getPhone());
         holder.txtEmail.setText(list.get(position).getEmail());
+
+        name  = list.get(position).getName();
+        phone = list.get(position).getPhone();
+        email = list.get(position).getEmail();
+
+         holder.btnPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Log.i("BOTON_IVAN", "SE ACTIVO EL BOTON");
+                Intent i = new Intent(context, PostActivity.class);
+                i.putExtra("name", name);
+                i.putExtra("phone",phone);
+                i.putExtra("email", email);
+                view.getContext().startActivity(i);
+            }
+        });
+
+        
     }
 
     @Override
@@ -49,16 +71,5 @@ public class UserAdapter extends RecyclerView.Adapter<UserHolder> {
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    // Insert a new item to the RecyclerView on a predefined position
-    public void insert(int position, User data) {
-        list.add(position, data);
-        notifyItemInserted(position);
-    }
 
-    // Remove a RecyclerView item containing a specified Data object
-    public void remove(User data) {
-        int position = list.indexOf(data);
-        list.remove(position);
-        notifyItemRemoved(position);
-    }
 }

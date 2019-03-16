@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,8 +56,6 @@ public class MainActivity extends Activity {
 
             Call<ArrayList<User>> call = api.getUsers();
 
-            Log.i("PRUEBA1", "Resultado: " + call);
-
             call.enqueue(new Callback<ArrayList<User>>() {
                 @Override
                 public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
@@ -86,5 +85,6 @@ public class MainActivity extends Activity {
             Snackbar.make(findViewById(R.id.layout_main), "Check your internet connection!", Snackbar.LENGTH_LONG).show();
         }
     }
+
 
 }
