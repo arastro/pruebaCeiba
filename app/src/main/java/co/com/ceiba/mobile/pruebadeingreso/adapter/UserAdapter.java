@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -69,5 +71,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserHolder> {
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-
+    public void filterList(ArrayList<User> filteredList){
+        list = filteredList;
+        notifyDataSetChanged();
+    }
 }
