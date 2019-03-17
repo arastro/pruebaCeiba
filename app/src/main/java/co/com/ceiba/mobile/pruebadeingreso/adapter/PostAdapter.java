@@ -19,7 +19,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostHolder>{
 
     List<Post> list = Collections.emptyList();
     Context context;
-    String title, body;
 
     public PostAdapter(List<Post> list, Context context){
         this.list = list;

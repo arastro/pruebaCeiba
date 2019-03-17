@@ -13,7 +13,7 @@ public class PostHolder extends RecyclerView.ViewHolder   {
 
     public PostHolder(View itemView){
         super(itemView);
-        txtTitle  = itemView.findViewById(R.id.titlePosts);
+        txtTitle  = itemView.findViewById(R.id.title);
         txtBody = itemView.findViewById(R.id.body);
     }
 
